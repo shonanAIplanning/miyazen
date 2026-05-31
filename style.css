@@ -124,10 +124,13 @@ img {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    margin: 40px 0 60px;
+    
+    /* ★全デバイス共通仕様：天地の余白（スペース）を完全に削除し、前後セクションと密接 */
+    margin: 0;
+    padding: 0;
 }
 
-/* スマホ版すりガラス：右上端に完全固定 */
+/* スマホ版背景ブロック：はみ出しを解決し、他背景色と完全同期 */
 .glass-container {
     position: absolute;
     top: 0;   
@@ -141,11 +144,12 @@ img {
     justify-content: flex-start; 
     align-items: flex-start;
     
-    width: 35vw; /* スマホ画面の右側3.5割にフィット */
+    width: 45vw; /* 文字のはみ出しを防ぐため4.5割へ適正拡張 */
     height: 100%; 
-    padding: 24px 8px;
+    padding: 32px 14px; 
     
-    background-color: rgba(255, 255, 255, 0.85); 
+    /* ★全デバイス共通仕様：背景色を白から、他エリアの背景色（#fbf9f5）へ完全同期 */
+    background-color: rgba(251, 249, 245, 0.88); 
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border-left: 1px solid rgba(0, 0, 0, 0.05);
@@ -155,7 +159,7 @@ img {
 .philosophy h2 {
     font-size: 1.05rem;
     font-weight: 500;
-    margin-left: 10px; 
+    margin-left: 12px; 
     line-height: 1.6;
     letter-spacing: 0.12em;
 }
@@ -316,7 +320,7 @@ img {
     gap: 12px; 
 }
 
-/* 右上配置：4辺エッジぼかし（スマホサイズ） */
+/* 右上配置：4辺エッジぼかし */
 .couple-blurred-photo {
     position: absolute;
     top: -10px; 
@@ -377,44 +381,43 @@ img {
         padding-right: 24px;
     }
 
-    /* 2. 【完全修正】コンセプト ＆ 店主エリア（背景画像 ＆ 右3割の完全同期） */
+    /* 2. コンセプト ＆ 店主エリア */
     .philosophy {
-        padding: 0;
-        margin: 100px 0;
-        width: 100vw; /* ★ウィンドウの両端（100%）まで強制的に拡大（これで隙間が消滅します） */
-        height: 450px; /* 他の画像パーツと縦幅をミリ単位で完全固定 */
-        position: relative; /* すりガラスを右上端に固定するための基準点 */
-        
-        /* ★写真をCSSの背景として敷き詰める（これで写真の単体可変バグを100%遮断） */
+        width: 100vw; 
+        height: 450px; 
+        position: relative; 
         background-image: url('images/owner-cooking.webp');
         background-repeat: no-repeat;
         background-position: center center;
-        background-size: cover; /* ウィンドウ可変に合わせて、16:10の比率を保ったままダイナミックに全幅を追従 */
+        background-size: cover; 
+        
+        /* ★全デバイス共通仕様：大画面時も天地の不要な白スペース（マージン等）を完全削除 */
+        margin: 0; 
+        padding: 0;
     }
 
-    /* ★解決の核心：すりガラスコンテナ自体を、ウィンドウ全体の「右側3割（30vw）」として完全に定義 */
+    /* 大画面用の背景調整：右3割（30vw）にピタッと吸着固定 */
     .glass-container {
         position: absolute;
         top: 0;       
-        right: 0; /* ★ウィンドウ全体の右上端に1ピクセルの狂いもなく100%吸着固定（ズレが物理的に発生しません） */
+        right: 0; 
         
         display: flex; 
         flex-direction: column;
-        justify-content: flex-start; /* 縦書き開始位置（右上部）寄せ */
+        justify-content: flex-start; 
         align-items: flex-start;
         
-        /* 【重要】固定のpx指定やインラインを捨て、ウィンドウ幅に対して正確に「3割（30vw）」を敷き詰める設定。
-           これにより、文字のハミ出しが消え、背景が文字の塊に連動して常にぴったりと敷かれます */
         width: 30vw;
-        height: 100%; /* 写真の縦幅450pxに100%完全同期 */
+        height: 100%; 
         padding: 48px 32px;  
         
-        background-color: rgba(255, 255, 255, 0.85); 
+        /* ★全デバイス共通仕様：背景色を白から、他エリアの背景色（#fbf9f5）へ完全同期 */
+        background-color: rgba(251, 249, 245, 0.88); 
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
         
         border: none;
-        border-left: 1px solid rgba(0, 0, 0, 0.05); /* 左境界に極細のヘアライン */
+        border-left: 1px solid rgba(0, 0, 0, 0.05); 
         z-index: 10;
     }
 
