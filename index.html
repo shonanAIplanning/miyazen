@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>店舗名 | 宮古島 日本料理・寿司・手打ち蕎麦</title>
+    <title>みやぜん | 宮古島 日本料理・寿司・手打ち蕎麦</title>
     <meta name="description" content="宮古島の素材を実直に引き出す日本料理店。一期一会のおまかせコースと、公式Instagramにて発信する限定ランチのご案内。">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,18 +12,43 @@
 </head>
 <body>
 
+    <!-- 言語切替ボタン -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="ja">JP</button>
+        <span class="lang-separator">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
     <header class="hero">
         <div class="hero-brand fade-in">
-            <img src="images/logo.png" alt="店舗名 ロゴ" class="logo">
+            <img src="images/logo.png" alt="みやぜん ロゴ" class="logo">
         </div>
         <div class="hero-visual fade-in">
             <div class="hero-slider-track">
-                <div class="hero-slide"><img src="images/slide1.webp" alt="宮古島の恵みを映す日本料理"></div>
-                <div class="hero-slide"><img src="images/slide2.webp" alt="一貫ずつ心を込めて握る寿司"></div>
-                <div class="hero-slide"><img src="images/slide3.webp" alt="職人が打つ締めの蕎麦"></div>
-                <div class="hero-slide"><img src="images/slide1.webp" alt="宮古島の恵みを映す日本料理"></div>
-                <div class="hero-slide"><img src="images/slide2.webp" alt="一貫ずつ心を込めて握る寿司"></div>
-                <div class="hero-slide"><img src="images/slide3.webp" alt="職人が打つ締めの蕎麦"></div>
+                <div class="hero-slide">
+                    <img src="images/slide1.webp" alt="宮古島の恵みを映す日本料理" class="lang-ja">
+                    <img src="images/slide1.webp" alt="Japanese cuisine reflecting the blessings of Miyakojima" class="lang-en">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/slide2.webp" alt="一貫ずつ心を込めて握る寿司" class="lang-ja">
+                    <img src="images/slide2.webp" alt="Sushi hand-pressed with care" class="lang-en">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/slide3.webp" alt="職人が打つ締めの蕎麦" class="lang-ja">
+                    <img src="images/slide3.webp" alt="Buckwheat soba handmade by the chef" class="lang-en">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/slide1.webp" alt="宮古島の恵みを映す日本料理" class="lang-ja">
+                    <img src="images/slide1.webp" alt="Japanese cuisine reflecting the blessings of Miyakojima" class="lang-en">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/slide2.webp" alt="一貫ずつ心を込めて握る寿司" class="lang-ja">
+                    <img src="images/slide2.webp" alt="Sushi hand-pressed with care" class="lang-en">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/slide3.webp" alt="職人が打つ締めの蕎麦" class="lang-ja">
+                    <img src="images/slide3.webp" alt="Buckwheat soba handmade by the chef" class="lang-en">
+                </div>
             </div>
         </div>
     </header>
@@ -31,47 +56,74 @@
     <main>
        <section class="philosophy">
             <div class="text-block fade-in glass-container">
-                <h2>宮古島の素材を、実直に引き出す。</h2>
-                <p>島が育む豊かな食材を、日本料理の確かな技法で仕立てます。丁寧にひいた出汁、一貫ずつ握る寿司、職人が自ら打つ締めの手打ち蕎麦。琉球石灰岩の層に磨かれた宮古島の清らかな地下水に敬意を払い、枠にとらわれない一期一会の一皿をお愉しみください。</p>
+                <h2 class="lang-ja">宮古島の素材を、実直に引き出す。</h2>
+                <h2 class="lang-en">Drawing out the true essence of Miyakojima's ingredients.</h2>
+                <p class="lang-ja">島が育む豊かな食材を、日本料理の確かな技法で仕立てます。丁寧にひいた出汁、一貫ずつ握る寿司、職人が自ら打つ締めの手打ち蕎麦。琉球石灰岩の層に磨かれた宮古島の清らかな地下水に敬意を払い、枠にとらわれない一期一会の一皿をお愉しみください。</p>
+                <p class="lang-en">We prepare the island's abundant ingredients using reliable Japanese culinary techniques. Savor our carefully brewed dashi, hand-pressed sushi, and handmade buckwheat soba to finish. Paying tribute to Miyakojima's pure underground water filtered through Ryukyu limestone, we welcome you to enjoy a once-in-a-lifetime dining experience.</p>
             </div>
         </section>
         <section class="menu">
             <div class="container">
                 <div class="menu-intro fade-in">
-                    <h2>お品書き</h2>
-                    <p class="price">厳選した宮古島の旬を仕立てる</p>
-                    <p class="menu-desc">
+                    <h2 class="lang-ja">お品書き</h2>
+                    <h2 class="lang-en">Menu</h2>
+                    <p class="price">
+                        <span class="lang-ja">厳選した宮古島の旬を仕立てる</span>
+                        <span class="lang-en">Crafting selected seasonal delicacies of Miyakojima</span>
+                    </p>
+                    <p class="menu-desc lang-ja">
                         当店では、宮古島の豊かな食材を実直に引き出すお品書きをご用意しております。日本料理の繊細な出汁に始まり、一貫ずつ心を込めて握る寿司、そして職人が打つ締めの蕎麦まで、旬の美味をご堪能ください。
+                    </p>
+                    <p class="menu-desc lang-en">
+                        We offer a selection of dishes that showcase the rich ingredients of Miyakojima. Enjoy our seasonal delicacies, starting with delicate Japanese dashi, followed by hand-pressed sushi, and ending with traditional handmade buckwheat soba.
                     </p>
                 </div>
 
                 <div class="menu-categories fade-in">
                     <!-- カテゴリ1: 通常のコース -->
                     <div class="menu-category">
-                        <h3 class="category-title">通常のコース</h3>
+                        <h3 class="category-title">
+                            <span class="lang-ja">通常のコース</span>
+                            <span class="lang-en">Regular Courses</span>
+                        </h3>
                         <div class="menu-items">
                             <div class="menu-item">
                                 <div class="menu-item-meta">
-                                    <h4 class="menu-item-name">会席コース <span class="menu-item-sub">（15品ほど）</span></h4>
+                                    <h4 class="menu-item-name">
+                                        <span class="lang-ja">会席コース <span class="menu-item-sub">（15品ほど）</span></span>
+                                        <span class="lang-en">Kaiseki Course <span class="menu-item-sub">(approx. 15 dishes)</span></span>
+                                    </h4>
                                     <span class="menu-item-price">¥15,000 / ¥20,000</span>
                                 </div>
-                                <p class="menu-item-desc">※料金の違いは食材が変わります。</p>
+                                <p class="menu-item-desc">
+                                    <span class="lang-ja">※料金の違いは食材が変わります。</span>
+                                    <span class="lang-en">* Price variance reflects ingredient selections.</span>
+                                </p>
                             </div>
                             <div class="menu-item">
                                 <div class="menu-item-meta">
-                                    <h4 class="menu-item-name">少なめコース <span class="menu-item-sub">（会席コースの半分ほど）</span></h4>
+                                    <h4 class="menu-item-name">
+                                        <span class="lang-ja">少なめコース <span class="menu-item-sub">（会席コースの半分ほど）</span></span>
+                                        <span class="lang-en">Light Kaiseki Course <span class="menu-item-sub">(approx. half size)</span></span>
+                                    </h4>
                                     <span class="menu-item-price">¥10,000</span>
                                 </div>
                             </div>
                             <div class="menu-item">
                                 <div class="menu-item-meta">
-                                    <h4 class="menu-item-name">鮨コース</h4>
+                                    <h4 class="menu-item-name">
+                                        <span class="lang-ja">鮨コース</span>
+                                        <span class="lang-en">Sushi Course</span>
+                                    </h4>
                                     <span class="menu-item-price">¥18,000</span>
                                 </div>
                             </div>
                             <div class="menu-item">
                                 <div class="menu-item-meta">
-                                    <h4 class="menu-item-name">昼限定お膳コース</h4>
+                                    <h4 class="menu-item-name">
+                                        <span class="lang-ja">昼限定お膳コース</span>
+                                        <span class="lang-en">Lunch-Only Ozen Course</span>
+                                    </h4>
                                     <span class="menu-item-price">¥8,800</span>
                                 </div>
                             </div>
@@ -80,30 +132,48 @@
 
                     <!-- カテゴリ2: 特別コース -->
                     <div class="menu-category">
-                        <h3 class="category-title">特別コース <span class="category-sub">（ご相談・要事前予約）</span></h3>
-                        <p class="category-desc">「こんなのもできます」といったご要望にお応えする特別コースです。</p>
+                        <h3 class="category-title">
+                            <span class="lang-ja">特別コース <span class="category-sub">（ご相談・要事前予約）</span></span>
+                            <span class="lang-en">Special Courses <span class="category-sub">(Reservation required / Inquiry needed)</span></span>
+                        </h3>
+                        <p class="category-desc">
+                            <span class="lang-ja">「こんなのもできます」といったご要望にお応えする特別コースです。</span>
+                            <span class="lang-en">Special courses tailored to your specific requests.</span>
+                        </p>
                         <div class="menu-items">
                             <div class="menu-item">
                                 <div class="menu-item-meta">
-                                    <h4 class="menu-item-name">和牛すき焼き 又は しゃぶしゃぶコース</h4>
+                                    <h4 class="menu-item-name">
+                                        <span class="lang-ja">和牛すき焼き 又は しゃぶしゃぶコース</span>
+                                        <span class="lang-en">Wagyu Sukiyaki or Shabu-shabu Course</span>
+                                    </h4>
                                     <span class="menu-item-price">¥18,000</span>
                                 </div>
                             </div>
                             <div class="menu-item">
                                 <div class="menu-item-meta">
-                                    <h4 class="menu-item-name">海鮮しゃぶしゃぶコース</h4>
+                                    <h4 class="menu-item-name">
+                                        <span class="lang-ja">海鮮しゃぶしゃぶコース</span>
+                                        <span class="lang-en">Seafood Shabu-shabu Course</span>
+                                    </h4>
                                     <span class="menu-item-price">¥18,000</span>
                                 </div>
                             </div>
                             <div class="menu-item">
                                 <div class="menu-item-meta">
-                                    <h4 class="menu-item-name">すっぽんと鰻のコース</h4>
+                                    <h4 class="menu-item-name">
+                                        <span class="lang-ja">すっぽんと鰻のコース</span>
+                                        <span class="lang-en">Softshell Turtle & Eel Course</span>
+                                    </h4>
                                     <span class="menu-item-price">¥18,000</span>
                                 </div>
                             </div>
                             <div class="menu-item">
                                 <div class="menu-item-meta">
-                                    <h4 class="menu-item-name">虎河豚コース</h4>
+                                    <h4 class="menu-item-name">
+                                        <span class="lang-ja">虎河豚コース</span>
+                                        <span class="lang-en">Torafugu (Blowfish) Course</span>
+                                    </h4>
                                     <span class="menu-item-price">¥22,000</span>
                                 </div>
                             </div>
@@ -112,15 +182,33 @@
                 </div>
 
                 <div class="menu-notes fade-in">
-                    <p class="caption">※お昼時に通常のコースをご注文いただくことも可能です。</p>
-                    <p class="caption">※お席へのご提供方法（お膳スタイルにするか、一品ずつお出しするか）につきましては、お電話でのご予約時にご相談を承ります。</p>
-                    <p class="caption">※その日の仕入れや、お客様のお好み・呑まれるお酒に合わせて、店主が柔軟に献立を組み立てます。</p>
+                    <p class="caption">
+                        <span class="lang-ja">※お昼時に通常のコースをご注文いただくことも可能です。</span>
+                        <span class="lang-en">* Regular courses are also available during lunch.</span>
+                    </p>
+                    <p class="caption">
+                        <span class="lang-ja">※お席へのご提供方法（お膳スタイルにするか、一品ずつお出しするか）につきましては、お電話でのご予約時にご相談を承ります。</span>
+                        <span class="lang-en">* Serving styles (tray style or dish-by-dish course style) can be discussed when booking.</span>
+                    </p>
+                    <p class="caption">
+                        <span class="lang-ja">※その日の仕入れや、お客様のお好み・呑まれるお酒に合わせて、店主が柔軟に献立を組み立てます。</span>
+                        <span class="lang-en">* The chef dynamically adjusts the menu based on the day's fresh catch, your preferences, and drink pairings.</span>
+                    </p>
                 </div>
                 
                 <div class="gallery-grid">
-                    <div class="gallery-item fade-in"><img src="images/gallery1.webp" alt="料理一例 日本料理"></div>
-                    <div class="gallery-item fade-in"><img src="images/gallery2.webp" alt="料理一例 握り寿司"></div>
-                    <div class="gallery-item fade-in"><img src="images/gallery3.webp" alt="料理一例 手打ち蕎麦"></div>
+                    <div class="gallery-item fade-in">
+                        <img src="images/gallery1.webp" alt="料理一例 日本料理" class="lang-ja">
+                        <img src="images/gallery1.webp" alt="Dish example: Japanese Cuisine" class="lang-en">
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="images/gallery2.webp" alt="料理一例 握り寿司" class="lang-ja">
+                        <img src="images/gallery2.webp" alt="Dish example: Hand-pressed Sushi" class="lang-en">
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="images/gallery3.webp" alt="料理一例 手打ち蕎麦" class="lang-ja">
+                        <img src="images/gallery3.webp" alt="Dish example: Handmade Soba" class="lang-en">
+                    </div>
                 </div>
             </div>
         </section>
@@ -128,43 +216,96 @@
         <section class="info">
             <div class="container split-layout">
                 <div class="news-block fade-in">
-                    <h2>最新情報のご案内</h2>
-                    <p>当店では、その日に仕入れた特別な食材の入荷情報や最新の空席状況につきまして、公式Instagram（ストーリー・投稿）にてリアルタイムに発信しております。<br><br>
+                    <h2 class="lang-ja">最新情報のご案内</h2>
+                    <h2 class="lang-en">Latest News</h2>
+                    <p class="lang-ja">当店では、その日に仕入れた特別な食材の入荷情報や最新の空席状況につきまして、公式Instagram（ストーリー・投稿）にてリアルタイムに発信しております。<br><br>
                     臨時休業や貸切営業などの最新情報もこちらで随時ご案内しておりますので、ご来店の際は事前に下記よりご確認いただけますようお願い申し上げます。</p>
-                    <a href="https://instagram.com/ユーザー名" target="_blank" rel="noopener" class="btn btn-instagram">公式Instagramで最新状況を確認</a>
+                    <p class="lang-en">We share real-time updates regarding special ingredients and seat availability on our official Instagram (stories & posts).<br><br>
+                    Temporary closures and private bookings are also announced there. Please check it before visiting.</p>
+                    <a href="https://instagram.com/ユーザー名" target="_blank" rel="noopener" class="btn btn-instagram">
+                        <span class="lang-ja">公式Instagramで最新状況を確認</span>
+                        <span class="lang-en">Check latest updates on Instagram</span>
+                    </a>
                 </div>
                 
                 <div class="contact-block fade-in">
-                    <h2>お席のご確認 ・ お問い合わせ</h2>
-                    <p class="lead">ご予約状況のご確認、コース内容のご相談は、InstagramのDMまたはお電話にてお気軽にお問い合わせください。</p>
+                    <h2 class="lang-ja">お席のご確認 ・ お問い合わせ</h2>
+                    <h2 class="lang-en">Reservations & Inquiries</h2>
+                    <p class="lead">
+                        <span class="lang-ja">ご予約状況のご確認、コース内容のご相談は、InstagramのDMまたはお電話にてお気軽にお問い合わせください。</span>
+                        <span class="lang-en">Please contact us via Instagram DM or phone for availability and course details.</span>
+                    </p>
                     
                     <table class="info-table">
                         <tr>
-                            <th>営業時間</th>
+                            <th>
+                                <span class="lang-ja">営業時間</span>
+                                <span class="lang-en">Hours</span>
+                            </th>
                             <td>
-                                11:00〜（最終入店 13:30）<br>
-                                17:00〜（最終入店 21:00）
+                                <span class="lang-ja">
+                                    11:00〜（最終入店 13:30）<br>
+                                    17:00〜（最終入店 21:00）
+                                </span>
+                                <span class="lang-en">
+                                    11:00 - (Last entry 13:30)<br>
+                                    17:00 - (Last entry 21:00)
+                                </span>
                             </td>
                         </tr>
-                        <tr><th>定休日</th><td>不定休</td></tr>
-                        <tr><th>お支払い</th><td>クレジットカード可 / 現金</td></tr>
+                        <tr>
+                            <th>
+                                <span class="lang-ja">定休日</span>
+                                <span class="lang-en">Closed</span>
+                            </th>
+                            <td>
+                                <span class="lang-ja">不定休</span>
+                                <span class="lang-en">Irregular holidays</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="lang-ja">お支払い</span>
+                                <span class="lang-en">Payment</span>
+                            </th>
+                            <td>
+                                <span class="lang-ja">クレジットカード可 / 現金</span>
+                                <span class="lang-en">Credit Cards / Cash</span>
+                            </td>
+                        </tr>
                     </table>
 
                     <div class="cancellation-policy">
-                        <span class="policy-title">⚠️ キャンセルポリシー</span>
+                        <span class="policy-title">
+                            <span class="lang-ja">⚠️ キャンセルポリシー</span>
+                            <span class="lang-en">⚠️ Cancellation Policy</span>
+                        </span>
                         <p class="policy-desc">
-                            コース予約の為、仕入れ、仕込みの都合上、キャンセル料が発生いたします。<br>
-                            <strong>・当日キャンセル：コース料理の100%</strong>
+                            <span class="lang-ja">
+                                コース予約の為、仕入れ、仕込みの都合上、キャンセル料が発生いたします。<br>
+                                <strong>・当日キャンセル：コース料理の100%</strong>
+                            </span>
+                            <span class="lang-en">
+                                Due to food procurement and preparation, a cancellation fee will apply.<br>
+                                <strong>・Same-day cancellation: 100% of the course fee</strong>
+                            </span>
                         </p>
                     </div>
                     
                     <div class="contact-actions">
-                        <a href="https://instagram.com/ユーザー名" target="_blank" rel="noopener" class="btn btn-instagram">Instagramで問い合わせる</a>
-                        <a href="tel:0000000000" class="btn btn-outline">お電話で問い合わせる</a>
+                        <a href="https://instagram.com/ユーザー名" target="_blank" rel="noopener" class="btn btn-instagram">
+                            <span class="lang-ja">Instagramで問い合わせる</span>
+                            <span class="lang-en">Inquire via Instagram</span>
+                        </a>
+                        <a href="tel:0000000000" class="btn btn-outline">
+                            <span class="lang-ja">お電話で問い合わせる</span>
+                            <span class="lang-en">Inquire via Phone</span>
+                        </a>
                     </div>
 
                     <div class="couple-blurred-photo fade-in">
-                        <img src="images/owner-couple.webp" alt="店主夫妻のおもてなし">
+                        <img src="images/owner-couple.webp" alt="店主夫妻のおもてなし" class="lang-ja">
+                        <img src="images/owner-couple.webp" alt="Warm hospitality from the owner couple" class="lang-en">
                     </div>
                 </div>
             </div>

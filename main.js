@@ -26,4 +26,51 @@ window.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
+    // 言語切替の処理
+    var langButtons = document.querySelectorAll('.lang-btn');
+    var body = document.body;
+
+    // ローカルストレージから保存された言語を読み込む（デフォルトは日本語）
+    var savedLang = localStorage.getItem('preferred-lang') || 'ja';
+    setLanguage(savedLang);
+
+    langButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var lang = this.getAttribute('data-lang');
+            setLanguage(lang);
+        });
+    });
+
+    function setLanguage(lang) {
+        if (lang === 'en') {
+            body.classList.add('lang-mode-en');
+            body.classList.remove('lang-mode-ja');
+            document.title = "Miyazen | Japanese Cuisine, Sushi & Soba in Miyakojima";
+            var metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+                metaDesc.setAttribute("content", "A Japanese restaurant in Miyakojima highlighting the essence of local ingredients. Discover our seasonal Kaiseki course and updates via Instagram.");
+            }
+        } else {
+            body.classList.add('lang-mode-ja');
+            body.classList.remove('lang-mode-en');
+            document.title = "みやぜん | 宮古島 日本料理・寿司・手打ち蕎麦";
+            var metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+                metaDesc.setAttribute("content", "宮古島の素材を実直に引き出す日本料理店。一期一会のおまかせコースと、公式Instagramにて発信する限定ランチのご案内。");
+            }
+        }
+        
+        // アクティブなボタンのスタイルを更新
+        langButtons.forEach(function(button) {
+            if (button.getAttribute('data-lang') === lang) {
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
+            }
+        });
+
+        // 選択された言語を保存
+        localStorage.setItem('preferred-lang', lang);
+    }
+
 });

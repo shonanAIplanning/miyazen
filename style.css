@@ -144,7 +144,7 @@ img {
     justify-content: flex-start; 
     align-items: flex-start;
     
-    width: 45%; /* 文字のはみ出しを防ぐため4.5割へ適正拡張 */
+    width: 55%; /* 縦文字のはみ出しを防ぐため5.5割へ拡張 */
     height: 100%; 
     padding: 32px 14px; 
     
@@ -616,5 +616,97 @@ img {
     .menu-category {
         flex: 1;
         padding: 32px;
+    }
+}
+
+/* ==========================================================================
+   4. 言語切替（Language Switcher）
+   ========================================================================== */
+.lang-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    background-color: rgba(251, 249, 245, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(29, 61, 74, 0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 2px 6px;
+    transition: color 0.3s ease;
+    letter-spacing: 0.05em;
+}
+
+.lang-btn:hover {
+    color: var(--color-text-dark);
+}
+
+.lang-btn.active {
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+.lang-separator {
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, 0.15);
+    user-select: none;
+}
+
+/* 言語切り替え表示ルール */
+.lang-en {
+    display: none !important;
+}
+
+/* 英語モード時の切り替え */
+.lang-mode-en .lang-ja {
+    display: none !important;
+}
+
+.lang-mode-en .lang-en {
+    display: block !important;
+}
+
+/* インライン要素用の切り替え */
+.lang-mode-en span.lang-en,
+.lang-mode-en strong.lang-en,
+.lang-mode-en em.lang-en {
+    display: inline !important;
+}
+
+/* コンセプトエリアの英語モード時レイアウト調整 */
+.lang-mode-en .glass-container {
+    writing-mode: horizontal-tb;
+    -webkit-writing-mode: horizontal-tb;
+    width: 85%;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.lang-mode-en .philosophy p {
+    line-height: 1.8;
+    margin-top: 12px;
+}
+
+@media (min-width: 768px) {
+    .lang-mode-en .glass-container {
+        width: 40%;
+        padding: 48px 36px;
     }
 }
