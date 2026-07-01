@@ -43,6 +43,10 @@ img {
     transform: translateY(0);
 }
 
+.word {
+    display: inline-block;
+}
+
 
 /* ==========================================================================
    2. 段階①：モバイル環境（ウィンドウ幅：0 〜 767px）
@@ -71,18 +75,20 @@ img {
 }
 
 .hero-brand {
-    padding: 60px 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 340px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--color-bg-dark);
 }
 
 .hero-brand .logo {
-    width: 220px; 
+    width: 100%; 
     height: auto;
+    display: block;
     mix-blend-mode: multiply;           
-    clip-path: inset(2px 2px 2px 2px);  
 }
 
 .hero-visual {
@@ -118,15 +124,13 @@ img {
 /* 2. コンセプト & 店主（スマホ版） */
 .philosophy {
     position: relative;
-    width: 100%;
-    height: 380px;
+    width: 340px;
+    margin: 0 auto;
+    height: 450px; /* タブレットと同じ高さにして縦書き文字の崩れを防ぐ */
     background-image: url('images/owner-cooking.webp');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    
-    /* ★全デバイス共通仕様：天地の余白（スペース）を完全に削除し、前後セクションと密接 */
-    margin: 0;
     padding: 0;
 }
 
@@ -144,7 +148,7 @@ img {
     justify-content: flex-start; 
     align-items: flex-start;
     
-    width: 55%; /* 縦文字のはみ出しを防ぐため5.5割へ拡張 */
+    width: 200px; /* 固定幅 */
     height: 100%; 
     padding: 32px 14px; 
     
@@ -157,7 +161,7 @@ img {
 }
 
 .philosophy h2 {
-    font-size: 1.05rem;
+    font-size: 14px; /* PCサイズから縮小 */
     font-weight: 500;
     margin-left: 12px; 
     line-height: 1.6;
@@ -165,7 +169,7 @@ img {
 }
 
 .philosophy p {
-    font-size: 0.75rem;
+    font-size: 11px; /* PCサイズから縮小 */
     color: var(--color-text-dark);
     margin-left: 0;
     line-height: 2.1;
@@ -476,17 +480,19 @@ img {
     }
     
     .hero-brand {
-        width: 720px;
-        padding: 100px 0 50px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
     }
     
     .hero-brand .logo {
-        max-width: 280px; 
+        width: 100%;
+        max-width: 100%; 
     }
     
     .hero-visual {
         width: 720px;
-        height: 450px;
+        height: 360px; /* 450pxから360pxへサイズダウン */
     }
 
     .hero-slider-track {
@@ -501,20 +507,17 @@ img {
 
     /* 2. コンセプト ＆ 店主エリア */
     .philosophy {
-        width: 100%; 
+        width: 720px; 
+        margin: 0 auto;
         height: 450px; 
         position: relative; 
         background-image: url('images/owner-cooking.webp');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover; 
-        
-        /* ★全デバイス共通仕様：大画面時も天地の不要な白スペース（マージン等）を完全削除 */
-        margin: 0; 
         padding: 0;
     }
 
-    /* 大画面用の背景調整：右3割（30vw）にピタッと吸着固定 */
     .glass-container {
         position: absolute;
         top: 0;       
@@ -525,9 +528,9 @@ img {
         justify-content: flex-start; 
         align-items: flex-start;
         
-        width: 30%;
+        width: 270px; /* PC比率（0.75倍）に合わせて固定 */
         height: 100%; 
-        padding: 48px 32px;  
+        padding: 45px 24px;  
         
         /* ★全デバイス共通仕様：背景色を白から、他エリアの背景色（#fbf9f5）へ完全同期 */
         background-color: rgba(251, 249, 245, 0.88); 
@@ -540,13 +543,13 @@ img {
     }
 
     .philosophy h2 {
-        font-size: 1.35rem;
-        margin-left: 24px;   
+        font-size: 16px; /* PC比率（0.75倍）に合わせて縮小 */
+        margin-left: 18px;   
         line-height: 1.7;
     }
 
     .philosophy p {
-        font-size: 0.85rem;
+        font-size: 11px; /* PC比率（0.75倍）に合わせて縮小 */
         line-height: 2.2;
     }
 
@@ -618,6 +621,62 @@ img {
         padding: 32px;
     }
 }
+
+/* ==========================================================================
+   3.5 段階③：PC専用環境（ウィンドウ幅：1024px 以上すべて）
+   ========================================================================== */
+@media (min-width: 1024px) {
+    .container {
+        width: 960px;
+    }
+
+    /* 1. ファーストビュー：流れるスライダー */
+    .hero-brand {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+    
+    .hero-brand .logo {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .hero-visual {
+        width: 960px;
+        height: 480px; /* 600pxから480pxへサイズダウン */
+    }
+
+    .hero-slider-track {
+        width: calc(960px * 6);
+    }
+
+    .hero-slide {
+        width: 960px;
+        padding-right: 32px;
+    }
+
+    /* 2. コンセプト ＆ 店主エリア */
+    .philosophy {
+        width: 960px; 
+        height: 600px; 
+    }
+
+    .glass-container {
+        width: 360px; /* 固定幅 */
+        padding: 60px 32px;
+    }
+
+    .philosophy h2 {
+        font-size: 1.35rem; /* PC用の元のフォントサイズを適用 */
+        margin-left: 24px;   
+        line-height: 1.7;
+    }
+
+    .philosophy p {
+        font-size: 0.85rem; /* PC用の元のフォントサイズを適用 */
+        line-height: 2.2;
+    }}
 
 /* ==========================================================================
    4. 言語切替（Language Switcher）
@@ -692,7 +751,7 @@ img {
 .lang-mode-en .glass-container {
     writing-mode: horizontal-tb;
     -webkit-writing-mode: horizontal-tb;
-    width: 85%;
+    width: 290px; /* 固定幅 */
     padding: 24px 20px;
     display: flex;
     flex-direction: column;
@@ -706,7 +765,96 @@ img {
 
 @media (min-width: 768px) {
     .lang-mode-en .glass-container {
-        width: 40%;
-        padding: 48px 36px;
+        width: 360px; /* PC比率（0.75倍）に合わせて固定 */
+        padding: 45px 36px;
     }
+}
+
+@media (min-width: 1024px) {
+    .lang-mode-en .glass-container {
+        width: 480px; /* 固定幅 */
+        padding: 60px 48px;
+    }
+}
+
+/* ==========================================================================
+   5. 画像個別表示用モーダル（ライトボックス）
+   ========================================================================== */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: zoom-out;
+}
+
+.image-modal.is-open {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+    object-fit: contain;
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.image-modal.is-open .modal-content {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 300;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1;
+    z-index: 2001;
+}
+
+.modal-close:hover {
+    color: var(--color-text-muted);
+}
+
+.modal-caption {
+    margin: 16px auto 0;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    font-weight: 300;
+}
+
+/* スライド画像のインタラクション向上 */
+.hero-slide img {
+    transition: filter 0.3s ease;
+}
+
+.hero-slide img:hover {
+    filter: brightness(0.92);
 }
