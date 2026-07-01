@@ -275,13 +275,18 @@ window.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // 画面幅リサイズ時に対象スライド位置へ補正
+        // 画面の「横幅」が変わったときのみリサイズ処理を行う（スマホの上下スクロール時のアドレスバー伸縮による縦幅変化時のガクつきを防止）
+        var lastWidth = window.innerWidth;
         window.addEventListener('resize', function() {
-            var slideWidth = getSlideWidth();
-            var activeIndex = Math.round(currentX / slideWidth);
-            currentX = activeIndex * slideWidth;
-            sliderTrack.style.transition = 'none';
-            sliderTrack.style.transform = 'translateX(-' + currentX + 'px)';
+            var currentWidth = window.innerWidth;
+            if (currentWidth !== lastWidth) {
+                lastWidth = currentWidth;
+                var slideWidth = getSlideWidth();
+                var activeIndex = Math.round(currentX / slideWidth);
+                currentX = activeIndex * slideWidth;
+                sliderTrack.style.transition = 'none';
+                sliderTrack.style.transform = 'translateX(-' + currentX + 'px)';
+            }
         });
         
         // スクリプト読み込み完了後、アニメーションループ開始
