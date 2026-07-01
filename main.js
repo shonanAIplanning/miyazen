@@ -73,4 +73,66 @@ window.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('preferred-lang', lang);
     }
 
+    // 画像モーダル（ライトボックス）の処理
+    var modal = document.getElementById('image-modal');
+    var modalImg = document.getElementById('modal-img');
+    var captionText = document.getElementById('modal-caption');
+    var closeBtn = document.querySelector('.modal-close');
+    var slideImages = document.querySelectorAll('.hero-slide img');
+
+    slideImages.forEach(function(img) {
+        // カーソルスタイル変更のためのイベント追加
+        img.style.cursor = 'zoom-in';
+        
+        img.addEventListener('click', function() {
+            // 現在アクティブ（表示中）の画像のみを拡大対象とする（言語切り替えで隠れているものは除外）
+            var style = window.getComputedStyle(this);
+            if (style.display !== 'none') {
+                openModal(this.src, this.alt);
+            }
+        });
+    });
+
+    function openModal(src, alt) {
+        if (!modal || !modalImg || !captionText) return;
+        modal.style.display = 'flex';
+        // transitionを効かせるため僅かに遅延させてクラスを追加
+        setTimeout(function() {
+            modal.classList.add('is-open');
+        }, 10);
+        modalImg.src = src;
+        captionText.innerHTML = alt;
+        document.body.style.overflow = 'hidden'; // 背後のコンテンツスクロールを防止
+    }
+
+    function closeModal() {
+        if (!modal) return;
+        modal.classList.remove('is-open');
+        // フェードアウトアニメーション後に非表示にする
+        setTimeout(function() {
+            modal.style.display = 'none';
+        }, 400);
+        document.body.style.overflow = ''; // スクロール再開
+    }
+
+    // 閉じるボタン押下時
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+    // 背景クリック時（画像本体以外をクリックで閉じる）
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target !== modalImg) {
+                closeModal();
+            }
+        });
+    }
+
+    // ESCキーで閉じる
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+            closeModal();
+        }
+    });
+
 });

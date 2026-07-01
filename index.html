@@ -20,9 +20,14 @@
     </div>
 
     <header class="hero">
-        <div class="hero-brand fade-in">
-            <img src="images/logo.png" alt="みやぜん ロゴ" class="logo">
-        </div>
+        <picture class="hero-brand fade-in">
+            <!-- PC用バナー (1024px以上) -->
+            <source media="(min-width: 1024px)" srcset="images/logobaner-pc.webp">
+            <!-- タブレット用バナー (768px〜1023px) -->
+            <source media="(min-width: 768px)" srcset="images/logobaner-tab.webp">
+            <!-- スマホ用バナー (デフォルト) -->
+            <img src="images/logobaner-sp.webp" alt="みやぜん ロゴ" class="logo">
+        </picture>
         <div class="hero-visual fade-in">
             <div class="hero-slider-track">
                 <div class="hero-slide">
@@ -56,9 +61,9 @@
     <main>
        <section class="philosophy">
             <div class="text-block fade-in glass-container">
-                <h2 class="lang-ja">宮古島の素材を、実直に引き出す。</h2>
+                <h2 class="lang-ja"><span class="word">宮古島の素材を、</span><br><span class="word">実直に引き出す。</span></h2>
                 <h2 class="lang-en">Drawing out the true essence of Miyakojima's ingredients.</h2>
-                <p class="lang-ja">島が育む豊かな食材を、こだわりの無添加と日本料理の確かな技法で仕立てます。丁寧にひいた出汁、一貫ずつ握る寿司、職人が自ら打つ締めの手打ち蕎麦。琉球石灰岩の層に磨かれた宮古島の清らかな地下水に敬意を払い、お食事は一期一会のおまかせコースのみ。枠にとらわれない本物の味わいをお愉しみください。</p>
+                <p class="lang-ja"><span class="word">島が育む</span><span class="word">豊かな食材を、</span><span class="word">こだわりの無添加と</span><span class="word">日本料理の</span><span class="word">確かな技法で</span><span class="word">仕立てます。</span><span class="word">丁寧にひいた出汁、</span><span class="word">一貫ずつ握る寿司、</span><span class="word">職人が自ら打つ</span><span class="word">締めの手打ち蕎麦。</span><span class="word">琉球石灰岩の層に</span><span class="word">磨かれた</span><span class="word">宮古島の</span><span class="word">清らかな地下水に</span><span class="word">敬意を払い、</span><span class="word">お食事は</span><span class="word">一期一会の</span><span class="word">おまかせコースのみ。</span><span class="word">枠にとらわれない</span><span class="word">本物の味わいを</span><span class="word">お愉しみください。</span></p>
                 <p class="lang-en">We prepare the island's abundant ingredients using strictly additive-free, reliable Japanese culinary techniques. Savor our carefully brewed dashi, hand-pressed sushi, and handmade buckwheat soba to finish. Paying tribute to Miyakojima's pure underground water filtered through Ryukyu limestone, our dining experience is offered exclusively as a once-in-a-lifetime, chef's selection course.</p>
             </div>
         </section>
@@ -97,7 +102,7 @@
                                         <span class="lang-ja">会席コース <span class="menu-item-sub">（15品ほど）</span></span>
                                         <span class="lang-en">Kaiseki Course <span class="menu-item-sub">(approx. 15 dishes)</span></span>
                                     </h4>
-                                    <span class="menu-item-price">¥15,000 / ¥20,000</span>
+                                    <span class="menu-item-price">¥20,000 / ¥15,000</span>
                                 </div>
                                 <p class="menu-item-desc">
                                     <span class="lang-ja">※料金の違いは食材が変わります。</span>
@@ -107,8 +112,8 @@
                             <div class="menu-item">
                                 <div class="menu-item-meta">
                                     <h4 class="menu-item-name">
-                                        <span class="lang-ja">ミニ会席コース <span class="menu-item-sub">（8品）</span></span>
-                                        <span class="lang-en">Mini Kaiseki Course <span class="menu-item-sub">(8 dishes)</span></span>
+                                        <span class="lang-ja">ミニ会席コース <span class="menu-item-sub">（8品ほど）</span></span>
+                                        <span class="lang-en">Mini Kaiseki Course <span class="menu-item-sub">(approx. 8 dishes)</span></span>
                                     </h4>
                                     <span class="menu-item-price">¥10,000</span>
                                 </div>
@@ -139,10 +144,19 @@
                             <div class="menu-item">
                                 <div class="menu-item-meta">
                                     <h4 class="menu-item-name">
+                                        <span class="lang-ja">鮨コース</span>
+                                        <span class="lang-en">Sushi Course</span>
+                                    </h4>
+                                    <span class="menu-item-price">¥20,000 / ¥15,000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-meta">
+                                    <h4 class="menu-item-name">
                                         <span class="lang-ja">和牛すき焼き 又は しゃぶしゃぶコース</span>
                                         <span class="lang-en">Wagyu Sukiyaki or Shabu-shabu Course</span>
                                     </h4>
-                                    <span class="menu-item-price">¥15,000 / ¥20,000</span>
+                                    <span class="menu-item-price">¥20,000 / ¥15,000</span>
                                 </div>
                             </div>
                             <div class="menu-item">
@@ -151,16 +165,7 @@
                                         <span class="lang-ja">海鮮しゃぶしゃぶコース</span>
                                         <span class="lang-en">Seafood Shabu-shabu Course</span>
                                     </h4>
-                                    <span class="menu-item-price">¥15,000 / ¥20,000</span>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <div class="menu-item-meta">
-                                    <h4 class="menu-item-name">
-                                        <span class="lang-ja">鮨コース</span>
-                                        <span class="lang-en">Sushi Course</span>
-                                    </h4>
-                                    <span class="menu-item-price">¥15,000 / ¥20,000</span>
+                                    <span class="menu-item-price">¥20,000 / ¥15,000</span>
                                 </div>
                             </div>
                             <div class="menu-item">
@@ -319,6 +324,13 @@
             </div>
         </section>
     </main>
+
+    <!-- 画像個別表示用モーダル（ライトボックス） -->
+    <div id="image-modal" class="image-modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modal-img" alt="拡大画像">
+        <div id="modal-caption" class="modal-caption"></div>
+    </div>
 
     <script type="module" src="main.js"></script>
 </body>
