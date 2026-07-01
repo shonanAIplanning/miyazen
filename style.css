@@ -24,6 +24,7 @@ body {
     line-height: 1.85;
     letter-spacing: 0.06em;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; /* iPhoneでの横揺れ・はみ出しスクロールを防止 */
 }
 
 img {
@@ -95,21 +96,21 @@ img {
     position: relative; 
     width: 340px;
     height: 212.5px;
-    overflow: hidden; 
+    overflow: visible; /* 以前の両端表示（はみ出し）を復元 */
 }
 
 .hero-slider-track {
     display: flex;
-    width: 100%; 
+    width: calc(340px * 6); /* 6スライド分の幅を設定（ループ表示用） */
     height: 100%;
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .hero-slide {
-    width: 100%;
+    width: 340px; /* 固定幅に復元 */
     height: 100%;
     flex-shrink: 0;
-    padding-right: 0; 
+    padding-right: 16px; /* スライド間の余白を復元 */
 }
 
 .hero-slide img {
@@ -496,13 +497,13 @@ img {
     }
 
     .hero-slider-track {
-        width: 100%;
+        width: calc(720px * 6); /* 6スライド分の幅を設定 */
         animation: none;
     }
 
     .hero-slide {
-        width: 100%;
-        padding-right: 0;
+        width: 720px;
+        padding-right: 24px; /* 余白を復元 */
     }
 
     /* 2. コンセプト ＆ 店主エリア */
@@ -648,12 +649,12 @@ img {
     }
 
     .hero-slider-track {
-        width: 100%;
+        width: calc(960px * 6); /* 6スライド分の幅を設定 */
     }
 
     .hero-slide {
-        width: 100%;
-        padding-right: 0;
+        width: 960px;
+        padding-right: 32px; /* 余白を復元 */
     }
 
     /* 2. コンセプト ＆ 店主エリア */
@@ -859,58 +860,51 @@ img {
     filter: brightness(0.92);
 }
 
-/* スライダーのナビゲーションボタン */
+/* スライダーのナビゲーションボタン（シンプルな矢印のみ） */
 .slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.45);
-    color: var(--color-text-dark);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 100; /* 最前面に表示 */
+    padding: 12px 16px; /* タップ領域を確保 */
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    z-index: 20;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.8;
+    pointer-events: auto;
 }
 
 .slider-btn:hover {
-    background-color: rgba(251, 249, 245, 0.9);
-    color: var(--color-accent);
-    transform: translateY(-50%) scale(1.08);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    opacity: 1;
+    transform: translateY(-50%) scale(1.2);
 }
 
 .slider-btn:active {
-    transform: translateY(-50%) scale(0.95);
+    transform: translateY(-50%) scale(0.9);
 }
 
 .prev-btn {
-    left: 12px;
+    left: 0px;
 }
 
 .next-btn {
-    right: 12px;
+    right: 0px;
 }
 
-/* モバイルではボタンを少し小さく、余白に合わせる */
+/* モバイルでの位置調整 */
 @media (max-width: 767px) {
     .slider-btn {
-        width: 36px;
-        height: 36px;
+        padding: 8px 12px;
     }
     .prev-btn {
-        left: 8px;
+        left: -4px;
     }
     .next-btn {
-        right: 8px;
+        right: -4px;
     }
 }

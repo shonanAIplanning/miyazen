@@ -135,62 +135,157 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // スライドショーの左右ナビゲーション & 自動スクロール制御
+    // スライドショーの左右ナビゲーション & スムーズ自動スクロール制御
     var sliderVisual = document.querySelector('.hero-visual');
     var sliderTrack = document.querySelector('.hero-slider-track');
     var slides = document.querySelectorAll('.hero-slide');
     var prevBtn = document.querySelector('.prev-btn');
     var nextBtn = document.querySelector('.next-btn');
     
-    if (sliderVisual && sliderTrack && slides.length > 0) {
-        var currentIndex = 0;
-        var totalSlides = slides.length;
-        var autoplayInterval;
+    if (sliderVisual && sliderTrack && slides.length >= 6) {
+        var currentX = 0;
+        var isTransitioning = false;
+        var isHovered = false;
+        var animationId;
+        var resumeTimeout;
         
-        function showSlide(index) {
-            if (index >= totalSlides) {
-                currentIndex = 0;
-            } else if (index < 0) {
-                currentIndex = totalSlides - 1;
+        // メディアクエリの段階幅に完全に連動して横幅を確実に返す関数
+        function getSlideWidth() {
+            var width = window.innerWidth;
+            if (width >= 1024) {
+                return 960;
+            } else if (width >= 768) {
+                return 720;
             } else {
-                currentIndex = index;
+                return 340;
             }
-            sliderTrack.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
         }
         
-        function startAutoplay() {
-            stopAutoplay();
-            autoplayInterval = setInterval(function() {
-                showSlide(currentIndex + 1);
-            }, 6000); // 6秒ごとにスライド
+        // 連続的なスクロールアニメーション関数（自動で流れる）
+        function animateScroll() {
+            if (!isTransitioning && !isHovered) {
+                var slideWidth = getSlideWidth();
+                var loopWidth = slideWidth * 3; // 3スライド分の合計幅
+                
+                // 1フレームあたりの移動ピクセル（速度調整用）
+                currentX += 0.8; 
+                
+                if (currentX >= loopWidth) {
+                    currentX -= loopWidth;
+                }
+                
+                sliderTrack.style.transition = 'none'; // スムーズスクロール中はイージングアニメーションを無効化
+                sliderTrack.style.transform = 'translateX(-' + currentX + 'px)';
+            }
+            animationId = requestAnimationFrame(animateScroll);
         }
         
-        function stopAutoplay() {
-            if (autoplayInterval) {
-                clearInterval(autoplayInterval);
+        // 指定した位置（スライド境界）へスムーズにアニメーション移動する関数
+        function smoothScrollTo(targetX, callback) {
+            isTransitioning = true;
+            stopResumeTimer();
+            
+            var slideWidth = getSlideWidth();
+            var loopWidth = slideWidth * 3;
+            
+            // 目標値のループ範囲内への丸め込み
+            var finalTarget = targetX;
+            if (finalTarget < 0) {
+                // 前に戻る際、マイナスになる場合はループの末尾に瞬間シフトして繋ぎ目を自然に見せる
+                currentX += loopWidth;
+                sliderTrack.style.transition = 'none';
+                sliderTrack.style.transform = 'translateX(-' + currentX + 'px)';
+                finalTarget += loopWidth;
+            }
+            
+            // 強制レイアウト更新でトランジションの適用を確実にする
+            sliderTrack.offsetHeight; 
+            
+            // スムーズなイージングトランジションを一時的に有効化してスライド移動
+            sliderTrack.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+            sliderTrack.style.transform = 'translateX(-' + finalTarget + 'px)';
+            
+            // 移動アニメーション完了後のクリーンアップ
+            setTimeout(function() {
+                currentX = finalTarget;
+                if (currentX >= loopWidth) {
+                    currentX -= loopWidth;
+                    sliderTrack.style.transition = 'none';
+                    sliderTrack.style.transform = 'translateX(-' + currentX + 'px)';
+                }
+                isTransitioning = false;
+                if (callback) callback();
+            }, 600); // CSSのtransition時間（600ms）と同調
+        }
+        
+        function startResumeTimer() {
+            stopResumeTimer();
+            resumeTimeout = setTimeout(function() {
+                // 手動操作がなければ自動スクロールフラグを解除（スクロール再開）
+                isHovered = false;
+            }, 4000); // クリック操作の4秒後に自動スクロールを再開
+        }
+        
+        function stopResumeTimer() {
+            if (resumeTimeout) {
+                clearTimeout(resumeTimeout);
             }
         }
         
         if (prevBtn) {
             prevBtn.addEventListener('click', function() {
-                showSlide(currentIndex - 1);
-                startAutoplay(); // 手動操作後にオートプレイタイマーをリセット
+                if (isTransitioning) return;
+                var slideWidth = getSlideWidth();
+                isHovered = true; // スクロールを一時停止
+                
+                // 現在位置から手前のスライドの境界インデックスを算出
+                var activeIndex = Math.ceil(currentX / slideWidth);
+                var targetX = (activeIndex - 1) * slideWidth;
+                
+                smoothScrollTo(targetX, function() {
+                    startResumeTimer();
+                });
             });
         }
         
         if (nextBtn) {
             nextBtn.addEventListener('click', function() {
-                showSlide(currentIndex + 1);
-                startAutoplay(); // 手動操作後にオートプレイタイマーをリセット
+                if (isTransitioning) return;
+                var slideWidth = getSlideWidth();
+                isHovered = true; // スクロールを一時停止
+                
+                // 現在位置から次のスライドの境界インデックスを算出
+                var activeIndex = Math.floor(currentX / slideWidth);
+                var targetX = (activeIndex + 1) * slideWidth;
+                
+                smoothScrollTo(targetX, function() {
+                    startResumeTimer();
+                });
             });
         }
         
-        // マウスホバー中は一時停止、離れたら再開
-        sliderVisual.addEventListener('mouseenter', stopAutoplay);
-        sliderVisual.addEventListener('mouseleave', startAutoplay);
+        // マウスホバーで一時停止する機能は、ホバー対応デバイス（PC）のみに適用（スマホでの停止バグを防ぐ）
+        if (window.matchMedia('(hover: hover)').matches) {
+            sliderVisual.addEventListener('mouseenter', function() {
+                isHovered = true;
+                stopResumeTimer();
+            });
+            sliderVisual.addEventListener('mouseleave', function() {
+                isHovered = false;
+            });
+        }
         
-        // 初期起動
-        startAutoplay();
+        // 画面幅リサイズ時に対象スライド位置へ補正
+        window.addEventListener('resize', function() {
+            var slideWidth = getSlideWidth();
+            var activeIndex = Math.round(currentX / slideWidth);
+            currentX = activeIndex * slideWidth;
+            sliderTrack.style.transition = 'none';
+            sliderTrack.style.transform = 'translateX(-' + currentX + 'px)';
+        });
+        
+        // スクリプト読み込み完了後、アニメーションループ開始
+        animateScroll();
     }
 
 });
