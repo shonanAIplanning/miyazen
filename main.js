@@ -135,4 +135,62 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // スライドショーの左右ナビゲーション & 自動スクロール制御
+    var sliderVisual = document.querySelector('.hero-visual');
+    var sliderTrack = document.querySelector('.hero-slider-track');
+    var slides = document.querySelectorAll('.hero-slide');
+    var prevBtn = document.querySelector('.prev-btn');
+    var nextBtn = document.querySelector('.next-btn');
+    
+    if (sliderVisual && sliderTrack && slides.length > 0) {
+        var currentIndex = 0;
+        var totalSlides = slides.length;
+        var autoplayInterval;
+        
+        function showSlide(index) {
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else {
+                currentIndex = index;
+            }
+            sliderTrack.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+        }
+        
+        function startAutoplay() {
+            stopAutoplay();
+            autoplayInterval = setInterval(function() {
+                showSlide(currentIndex + 1);
+            }, 6000); // 6秒ごとにスライド
+        }
+        
+        function stopAutoplay() {
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+            }
+        }
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function() {
+                showSlide(currentIndex - 1);
+                startAutoplay(); // 手動操作後にオートプレイタイマーをリセット
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+                showSlide(currentIndex + 1);
+                startAutoplay(); // 手動操作後にオートプレイタイマーをリセット
+            });
+        }
+        
+        // マウスホバー中は一時停止、離れたら再開
+        sliderVisual.addEventListener('mouseenter', stopAutoplay);
+        sliderVisual.addEventListener('mouseleave', startAutoplay);
+        
+        // 初期起動
+        startAutoplay();
+    }
+
 });

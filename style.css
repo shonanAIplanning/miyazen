@@ -95,21 +95,21 @@ img {
     position: relative; 
     width: 340px;
     height: 212.5px;
-    overflow: visible; 
+    overflow: hidden; 
 }
 
 .hero-slider-track {
     display: flex;
-    width: calc(340px * 6); 
+    width: 100%; 
     height: 100%;
-    animation: infiniteScroll 25s linear infinite; 
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .hero-slide {
-    width: 340px;
+    width: 100%;
     height: 100%;
     flex-shrink: 0;
-    padding-right: 16px; 
+    padding-right: 0; 
 }
 
 .hero-slide img {
@@ -496,13 +496,13 @@ img {
     }
 
     .hero-slider-track {
-        width: calc(720px * 6);
-        animation: infiniteScroll 35s linear infinite; 
+        width: 100%;
+        animation: none;
     }
 
     .hero-slide {
-        width: 720px;
-        padding-right: 24px;
+        width: 100%;
+        padding-right: 0;
     }
 
     /* 2. コンセプト ＆ 店主エリア */
@@ -648,12 +648,12 @@ img {
     }
 
     .hero-slider-track {
-        width: calc(960px * 6);
+        width: 100%;
     }
 
     .hero-slide {
-        width: 960px;
-        padding-right: 32px;
+        width: 100%;
+        padding-right: 0;
     }
 
     /* 2. コンセプト ＆ 店主エリア */
@@ -857,4 +857,60 @@ img {
 
 .hero-slide img:hover {
     filter: brightness(0.92);
+}
+
+/* スライダーのナビゲーションボタン */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.45);
+    color: var(--color-text-dark);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.slider-btn:hover {
+    background-color: rgba(251, 249, 245, 0.9);
+    color: var(--color-accent);
+    transform: translateY(-50%) scale(1.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.slider-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.prev-btn {
+    left: 12px;
+}
+
+.next-btn {
+    right: 12px;
+}
+
+/* モバイルではボタンを少し小さく、余白に合わせる */
+@media (max-width: 767px) {
+    .slider-btn {
+        width: 36px;
+        height: 36px;
+    }
+    .prev-btn {
+        left: 8px;
+    }
+    .next-btn {
+        right: 8px;
+    }
 }
